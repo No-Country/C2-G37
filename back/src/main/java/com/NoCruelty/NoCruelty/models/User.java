@@ -1,5 +1,6 @@
 package com.NoCruelty.NoCruelty.models;
 
+import com.NoCruelty.NoCruelty.enums.Rol;
 import io.orderup.DateAudit;
 import lombok.Data;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,12 +27,12 @@ public class User extends DateAudit implements UserDetails {
     private Rol rol;
 
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
-    private Zona zona;
+    private Zone zone;
 
     public User() {
     }
     
-    public User(Long id, String name, String surname, String password, String email, long phone, Rol rol, Zona zona) {
+    public User(Long id, String name, String surname, String password, String email, long phone, Rol rol, Zone zone) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -39,7 +40,7 @@ public class User extends DateAudit implements UserDetails {
         this.email = email;
         this.phone = phone;
         this.rol = rol;
-        this.zona = zona;
+        this.zone = zone;
     }
     
     public Long getId() {
@@ -98,10 +99,11 @@ public class User extends DateAudit implements UserDetails {
         this.rol = rol;
     }
 
-    public Zona getZona() {
-        return zona;
+    public Zone getZona() {
+        return zone;
     }
 
-    public void setZona(Zona zona) {
-        this.zona = zona;
+    public void setZona(Zone zone) {
+        this.zone = zone;
     }
+}
