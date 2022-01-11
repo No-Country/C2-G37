@@ -1,0 +1,25 @@
+.search-form {
+  background-color: #fff;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #000;
+}
+.search__product,
+.search__btn {
+  border: none;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+.search__product {
+  width: 100%;
+  font-size: 1rem;
+}
+.search__btn {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 800px) {
+}
