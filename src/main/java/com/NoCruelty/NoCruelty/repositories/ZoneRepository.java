@@ -1,4 +1,4 @@
-package repositories;
+package com.NoCruelty.NoCruelty.repositories;
 
 import com.NoCruelty.NoCruelty.models.Zone;
 import java.util.List;

@@ -3,18 +3,22 @@ package com.NoCruelty.NoCruelty.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import lombok.Data;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
+@Data
+@Table (name = "zone")
 public class Zone {
     
 private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Country")
@@ -23,39 +27,4 @@ private static final long serialVersionUID = 1L;
     @Column(name = "Province")
     private String province;
 
-    public Zone() {
-    }
-
-    public Zone(Long id, String country, String province) {
-        this.id = id;
-        this.country = country;
-        this.province = province;
-    }
-
-    
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-    
-    
 }

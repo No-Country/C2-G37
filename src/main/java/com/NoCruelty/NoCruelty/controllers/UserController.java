@@ -1,5 +1,7 @@
-package controllers;
+package com.NoCruelty.NoCruelty.controllers;
 
+import com.NoCruelty.NoCruelty.services.UserService;
+import com.NoCruelty.NoCruelty.services.ZoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
- import services.UserService;
-import services.ZoneService;
 
 @Controller
 public class UserController {
@@ -34,7 +34,7 @@ public class UserController {
 	public String perfil(Model model) {
 		Authentication auth = (Authentication) SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = null; 
-		model.addAttribute("user", userService.searchForId(userDetails.getUsername()));
+		model.addAttribute("user", userService.searchForId(userDetails.toString()));
 		
 		return "perfil";
 	}
@@ -46,11 +46,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/registroUser")
-	public String registroVoluntario(RedirectAttributes redirectAt, @RequestParam String name, @RequestParam String sourname,
+	public String registroVoluntario(RedirectAttributes redirectAt, @RequestParam String name, @RequestParam String surname,
 									 @RequestParam String password, @RequestParam String email, 
 									 @RequestParam Long phone) throws Exception {
 		try {
-			userService.save(name, sourname, password, email, phone);
+			userService.save(name, surname, password, email, phone);
 			return "redirect:/";
 		} catch (Error e) {
 			redirectAt.addFlashAttribute("error", e.getMessage());
@@ -64,7 +64,7 @@ public class UserController {
 	public String modificarUser(Model model) {
 		Authentication auth = (Authentication) SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = null;
-		model.addAttribute("user", userService.searchForId(userDetails.getUsername()));
+		model.addAttribute("user", userService.searchForId(userDetails.getPassword()));
 		return "modificarUser";
 	
 	}

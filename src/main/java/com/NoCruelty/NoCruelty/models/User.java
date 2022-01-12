@@ -16,10 +16,20 @@ public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(name = "name")
     private String name;
+    
+    @Column(name = "surname")
     private String surname;
+    
+    @Column(name = "password")
     private String password;
+    
+    @Column(name = "email")
     private String email;
+    
+    @Column(name = "phone")
     private long phone;
 
     @Enumerated(EnumType.STRING)
