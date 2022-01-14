@@ -1,34 +1,40 @@
 import { AiOutlineHome, AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { CgMenu } from "react-icons/cg";
 import { FiShoppingCart } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
+import LiButton from "./LiButton";
 import "./NavMobile.css";
 const NavMobile = () => {
   return (
-    <nav className="nav-mobile">
-      <ul>
-        <li>
-          <AiOutlineHome />
-          <span className="section-name">Inicio</span>
-        </li>
-        <li>
-          <CgMenu />
-          <span className="section-name">Menú</span>
-        </li>
-        <li>
-          <AiOutlineHeart />
-          <span className="section-name">Favoritos</span>
-        </li>
-        <li>
-          <AiOutlineUser />
-          <span className="section-name">Perfil</span>
-        </li>
-        <li>
-          <span className="cart-icon">
+    <nav className="nav-btns">
+      <ul className="nav-btns__ul">
+        <LiButton
+          delayAnimation={2}
+          to="/"
+          icon={AiOutlineHome}
+          title="Inicio"
+        />
+        <LiButton delayAnimation={3} to="/menu" icon={CgMenu} title="Menu" />
+        <LiButton
+          delayAnimation={4}
+          to="/favorites"
+          icon={AiOutlineHeart}
+          title="Favoritos"
+        />
+        <LiButton
+          delayAnimation={4}
+          to="/user"
+          icon={AiOutlineUser}
+          title="Perfil"
+        />
+
+        <li style={{ "--i": 5 }}>
+          <NavLink to="/cart" className={`cart-icon btns-link`}>
             <span className="cart-icon__position">
               <FiShoppingCart />
             </span>
-          </span>
-          <span className="section-name">Carrito</span>
+          </NavLink>
+          <span className="btns-link__name">Carrito</span>
         </li>
       </ul>
     </nav>

@@ -1,0 +1,21 @@
+.empty-section {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+.empty-section__img {
+  max-width: 240px;
+  margin-bottom: 2rem;
+}
+.empty-section__wrapper {
+  text-align: center;
+}
+.empty-section__title {
+  padding: 1rem;
+}
+.empty-section__text {
+  font-size: 0.9rem;
+}
