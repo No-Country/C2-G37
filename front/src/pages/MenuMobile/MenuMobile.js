@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BtnMenu from "./components/BtnMenu";
 import Submenu from "./components/Submenu";
 import "./MenuMobile.css";
@@ -51,7 +51,10 @@ const initialOptions = [
   },
 ];
 const MenuMobile = () => {
-  const [data, setData] = useState(initialOptions);
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    setData(initialOptions);
+  }, []);
   const [showMenu, setShowMenu] = useState(false);
   const [toFindCategories, setToFindCategories] = useState(null);
   const handleClick = (title) => {
