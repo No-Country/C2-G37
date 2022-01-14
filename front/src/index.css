@@ -49,6 +49,16 @@ code {
   flex-direction: column;
   text-decoration: none;
   color: #000;
+  cursor: pointer;
+}
+
+.btns-link > svg,
+.cart-icon svg {
+  transition: transform 0.1s ease;
+}
+.btns-link:active > svg,
+.cart-icon:active svg {
+  transform: scale(1.2);
 }
 @keyframes btns-icon {
   from {

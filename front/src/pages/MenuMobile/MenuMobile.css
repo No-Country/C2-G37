@@ -9,8 +9,11 @@
 .headers-menu {
   background-color: #fff;
   font-size: 1.5rem;
-  padding: 0 1rem;
+  padding: 1rem;
+  text-align: center;
+  background-color: #d6d6d6;
 }
+
 .menu__section {
   width: 100%;
   display: flex;
@@ -25,7 +28,6 @@
   font-size: 1rem;
   padding: 1rem;
   justify-content: space-between;
-  cursor: pointer;
 }
 .btn-menu__icon {
   transition: transform 0.3s ease;
@@ -45,7 +47,19 @@
   transform: translateX(0);
 }
 .sub-section__title {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  position: relative;
+  text-align: center;
+}
+.sub-section__icon {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+@media only screen and (min-width: 800px) {
+  .sub-section,
+  .btn-menu {
+    cursor: pointer;
+  }
 }

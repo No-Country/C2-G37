@@ -64,7 +64,9 @@ const MenuMobile = () => {
   console.log("renderizando menu");
   return (
     <main className="menu">
-      <h4 className="menu__title headers-menu">Menu</h4>
+      <header className="headers-menu">
+        <h4 className="menu__title ">Menu</h4>
+      </header>
       <section className="menu__section">
         {data.map(({ id, title }) => (
           <BtnMenu

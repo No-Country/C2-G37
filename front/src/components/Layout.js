@@ -1,4 +1,4 @@
-import Header from "../components/Header/Header";
+import Header from "./Header/Header";
 import NavMobile from "./Header/NavMobile";
 
 const Layout = ({ children }) => {

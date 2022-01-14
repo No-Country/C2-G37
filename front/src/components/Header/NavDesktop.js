@@ -8,7 +8,7 @@ const NavDesktop = () => {
       <ul className="nav-btns__ul">
         <LiButton delayAnimation={2} to="/favorites" icon={AiOutlineHeart} />
         <LiButton delayAnimation={3} to="/user" icon={AiOutlineUser} />
-        <LiButton delayAnimation={4} to="/menu" icon={FiShoppingCart} />
+        <LiButton delayAnimation={4} to="/cart" icon={FiShoppingCart} />
       </ul>
     </nav>
   );

@@ -23,7 +23,6 @@
   outline: 1px solid gray;
 }
 .search__btn {
-  cursor: pointer;
   font-size: 1.5rem;
   display: flex;
   justify-content: center;
@@ -31,6 +30,9 @@
 }
 
 @media only screen and (min-width: 800px) {
+  .search__btn {
+    cursor: pointer;
+  }
   .search-form {
     width: 290px;
   }
