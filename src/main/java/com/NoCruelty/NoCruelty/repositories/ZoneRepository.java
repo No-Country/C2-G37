@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ZoneRepository extends JpaRepository<Zone, String> {
+public interface ZoneRepository extends JpaRepository<Zone, Long> {
     
        @Query("SELECT c FROM Zone c WHERE c.province = :province AND c.country = :country")
     public Zone searchForProvinceCountry(@Param("province") String province, @Param("country") String country);
