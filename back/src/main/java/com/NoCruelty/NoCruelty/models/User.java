@@ -1,4 +1,4 @@
-package com.NoCruelty.NoCruelty.models;
+ppackage com.NoCruelty.NoCruelty.models;
 
 import com.NoCruelty.NoCruelty.enums.Rol;
 import java.io.Serializable;
@@ -43,3 +43,4 @@ public class User implements Serializable{
     }
 
 } 
+
