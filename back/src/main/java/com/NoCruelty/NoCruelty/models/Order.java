@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.NoCruelty.NoCruelty.models;
 
 import lombok.Data;
@@ -10,10 +5,6 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- *
- * @author Usuario
- */
 @Entity
 @Data
 public class Order {
@@ -28,5 +19,5 @@ public class Order {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     @JoinColumn(name = "id")
     private User user;
-
+  
 }

@@ -25,4 +25,5 @@ public class ShopCart {
     
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private Payment payment;
+
 }
