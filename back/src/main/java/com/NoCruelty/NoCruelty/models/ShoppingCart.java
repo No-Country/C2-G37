@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class ShopCart {
+public class ShoppingCart {
     
     private static final long serialVersionUID = 1L;
     
