@@ -1,0 +1,39 @@
+.search-form {
+  background-color: #fff;
+  width: 100%;
+
+  display: flex;
+  border-bottom: 1px solid #000;
+  margin-right: 1rem;
+  transition: width 0.6s ease;
+}
+.search__product,
+.search__btn {
+  border: none;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+.search__product {
+  width: 100%;
+  font-size: 0.8rem;
+  outline: 1px solid transparent;
+  transition: outline 0.3s ease;
+}
+.search__product:focus {
+  outline: 1px solid gray;
+}
+.search__btn {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 800px) {
+  .search__btn {
+    cursor: pointer;
+  }
+  .search-form {
+    width: 290px;
+  }
+}

@@ -3,13 +3,21 @@ package com.NoCruelty.NoCruelty.services;
 import com.NoCruelty.NoCruelty.enums.Rol;
 import com.NoCruelty.NoCruelty.models.User;
 import com.NoCruelty.NoCruelty.repositories.UserRepository;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -66,30 +74,30 @@ public class UserService implements UserDetailsService {
         userRepository.save(user);
     }
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        Optional<User> user= userRepository.findByUsername(username);
-//
-//        List<GrantedAuthority> permisos = new ArrayList<>();
-//
-//        if (user.get().getRol() != null) {
-//            permisos.add(new SimpleGrantedAuthority(Rol.ROL_USER.toString()));
-//            permisos.add(new SimpleGrantedAuthority(user.get().getRol().toString()));
-//        } else if (user.get().getRol().equals("ROLE_ADMIN")) {
-//            permisos.add(new SimpleGrantedAuthority(Rol.ROL_USER.toString()));
-//            permisos.add(new SimpleGrantedAuthority(user.get().getRol().toString()));
-//        } else {
-//            permisos.add(new SimpleGrantedAuthority("ROLE_GUEST"));
-//        }
-//
-//        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-//        HttpSession session = attr.getRequest().getSession(true);
-//        session.setAttribute("userSession", user);
-//
-//        User user2 = new User(user.get().getName(), user2.get().getPassword(), permisos);
-//        
-//        return user;
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> users= userRepository.findByUsername(username);
+
+        List<GrantedAuthority> permisos = new ArrayList<>();
+
+        if (users.get().getRol() != null) {
+            permisos.add(new SimpleGrantedAuthority(Rol.ROL_USER.toString()));
+            permisos.add(new SimpleGrantedAuthority(users.get().getRol().toString()));
+        } else if (users.get().getRol().equals("ROLE_ADMIN")) {
+            permisos.add(new SimpleGrantedAuthority(Rol.ROL_USER.toString()));
+            permisos.add(new SimpleGrantedAuthority(users.get().getRol().toString()));
+        } else {
+            permisos.add(new SimpleGrantedAuthority("ROLE_GUEST"));
+        }
+
+        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attr.getRequest().getSession(true);
+        session.setAttribute("userSession", users);
+
+        User user = new User(users.get(), users.get().getPassword(), permisos);
+        
+        return (UserDetails) user;
+    }
 
 
     public void validateModify(String name, String surname, String password, String email, Long phone) throws Error {
@@ -114,11 +122,5 @@ public class UserService implements UserDetailsService {
             throw new Error("Ingresó un DNI vacio o nulo");
         }
     }
-
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
    
 }
