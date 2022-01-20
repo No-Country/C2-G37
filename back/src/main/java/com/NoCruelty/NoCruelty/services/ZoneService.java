@@ -26,7 +26,7 @@ public class ZoneService {
     }
 
     @Transactional(readOnly = true)
-    public void modifyZone(String id, String province, String country) {
+    public void modifyZone(Long id, String province, String country) {
 
         validate(province, country);
 
@@ -56,7 +56,7 @@ public class ZoneService {
 
     }
 
-    public void delete(String id) {
+    public void delete(Long id) {
         Optional<Zone> answer = zoneRepository.findById(id);
         if (answer.isPresent()) {
             Zone zone = answer.get();

@@ -2,10 +2,12 @@ package com.NoCruelty.NoCruelty.models;
 
 import com.NoCruelty.NoCruelty.enums.Rol;
 import java.io.Serializable;
+import java.util.List;
 import lombok.Data;
 
 import javax.persistence.Table;
 import javax.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
 
 @Entity
 @Data
@@ -38,8 +40,13 @@ public class User implements Serializable{
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private Zone zone;
 
-    public Object get() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public User(Object get, String password, List<GrantedAuthority> permisos) {
+    this.name = name;
+    this.password = password;
+    }
+
+    public User() {
     }
 
 } 
+
