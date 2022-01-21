@@ -6,69 +6,82 @@ const initialOptions = [
   {
     id: 1,
     title: "MUJERES",
-    categories: {
-      vestuario: "Vestuario",
-      vestuarioList: [
-        { title: "Camisetas" },
-        { title: "Camisas" },
-        { title: "Vestidos" },
-        { title: "Pantalones" },
-        { title: "Chaquetas" },
-        { title: "Yoga" },
-      ],
-      accesorios: "Accesorios",
-
-      accesoriosList: [
-        { title: "Bolsos" },
-        { title: "Maquillaje" },
-        { title: "Bisutería" },
-      ],
-      zapatot: "Zapatos",
-      zapatosList: [
-        { title: "Botas" },
-        { title: "Tacones" },
-        { title: "Sandalias" },
-        { title: "Tenis" },
-        { title: "Crocs" },
-        { title: "Babuchas" },
-      ],
-    },
+    subCategories: [
+      {
+        title: "Vestuario",
+        list: [
+          { title: "Camisetas" },
+          { title: "Camisas" },
+          { title: "Vestidos" },
+          { title: "Pantalones" },
+          { title: "Chaquetas" },
+          { title: "Yoga" },
+        ],
+      },
+      {
+        title: "Accesorios",
+        list: [
+          { title: "Bolsos" },
+          { title: "Maquillaje" },
+          { title: "Bisutería" },
+        ],
+      },
+      {
+        title: "Zapatos",
+        list: [
+          { title: "Botas" },
+          { title: "Tacones" },
+          { title: "Sandalias" },
+          { title: "Tenis" },
+          { title: "Crocs" },
+          { title: "Babuchas" },
+        ],
+      },
+    ],
   },
   {
     id: 2,
     title: "HOMBRES",
-    categories: {
-      vestuario: [
-        { title: "Camisetas" },
-        { title: "Camisas" },
-        { title: "Pantalones" },
-        { title: "Chaquetas" },
-        { title: "Yoga" },
-      ],
-      accesorios: [],
-      zapatos: [{ title: "Tenis" }],
-    },
+    subCategories: [
+      {
+        title: "Vestuario",
+        list: [
+          { title: "Camisetas" },
+          { title: "Camisas" },
+          { title: "Pantalones" },
+          { title: "Chaquetas" },
+          { title: "Yoga" },
+        ],
+      },
+      {
+        title: "Accesorios",
+        list: [],
+      },
+      {
+        title: "Zapatos",
+        list: [{ title: "Tenis" }],
+      },
+    ],
   },
 ];
 const MenuMobile = () => {
-  const [data, setData] = useState([]);
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
-    setData(initialOptions);
+    setCategories(initialOptions);
   }, []);
   const [showMenu, setShowMenu] = useState(false);
-  const [toFindCategories, setToFindCategories] = useState(null);
+  const [idToFindCategories, setIdToFindCategories] = useState(null);
   const handleClick = (title) => {
     setShowMenu(!showMenu);
-    setToFindCategories(title);
+    setIdToFindCategories(title);
   };
-  console.log("renderizando menu");
   return (
-    <main className="menu">
+    <main className="menu scroll">
       <header className="headers-menu">
         <h4 className="menu__title ">Menu</h4>
       </header>
       <section className="menu__section">
-        {data.map(({ id, title }) => (
+        {categories.map(({ id, title }) => (
           <BtnMenu
             key={id}
             id={id}
@@ -81,8 +94,8 @@ const MenuMobile = () => {
       <Submenu
         setShowMenu={setShowMenu}
         showMenu={showMenu}
-        toFindCategories={toFindCategories}
-        data={data}
+        idToFindCategories={idToFindCategories}
+        categories={categories}
       />
     </main>
   );

@@ -1,7 +1,6 @@
 import { AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import LiButton from "./LiButton";
-import "./NavDesktop.css";
 const NavDesktop = () => {
   return (
     <nav className="nav-btns-desk">

@@ -1,0 +1,66 @@
+{
+  "maquillaje": [
+    {
+      "id": 1,
+      "idProduct": 1,
+      "name": "STACK THE ODDS FACE PALETTE",
+      "price": 38.0,
+      "description": "MAKEUP",
+      "category": "nose",
+      "stock": 1,
+      "urlImage": "https://cdn.shopify.com/s/files/1/2434/0721/products/SizeReferenceImages_3_copy7_1800x1800.png?v=1621015083"
+    },
+    {
+      "id": 2,
+      "idProduct": 2,
+      "name": "LIPSTICK - STRENGTH",
+      "price": 400.0,
+      "description": "MAKEUP",
+      "category": "nose",
+      "stock": 2,
+      "urlImage": "https://cdn.shopify.com/s/files/1/2434/0721/products/23_6116eab3-7343-4726-81bd-f9b8244dea76_1800x1800.png?v=1637351871"
+    },
+    {
+      "id": 3,
+      "idProduct": 3,
+      "name": "DOUBLE TEAM TINTED LIP LOTION",
+      "price": 10.0,
+      "description": "MAKEUP",
+      "category": "nose",
+      "stock": 2,
+      "urlImage": "https://cdn.shopify.com/s/files/1/2434/0721/products/SizeReferenceImages_3_copy4_702e497a-3786-4697-b462-619066c39384_1800x1800.png?v=1621015201"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "idProduct": 1,
+      "name": "Demi bucket",
+      "price": 100.0,
+      "description": "CLOTHING",
+      "category": "nose",
+      "stock": 1,
+      "urlImage": "https://cdn.shopify.com/s/files/1/2434/0721/products/3_10_1800x1800.jpg?v=1633559504"
+    },
+    {
+      "id": 2,
+      "idProduct": 2,
+      "name": "RUBY CROSSBODY",
+      "price": 400.0,
+      "description": "PHARMACY",
+      "category": "nose",
+      "stock": 2,
+      "urlImage": "https://cdn.shopify.com/s/files/1/2434/0721/products/9_720x.jpg?v=1615397990"
+    },
+    {
+      "id": 3,
+      "idProduct": 3,
+      "name": "PALOMA CARRY-ALL TOTE",
+      "price": 500.0,
+      "description": "PHARMACY",
+      "category": "nose",
+      "stock": 2,
+      "urlImage": "https://cdn.shopify.com/s/files/1/2434/0721/products/4_8_1800x1800.jpg?v=1636475054"
+    }
+  ]
+}
