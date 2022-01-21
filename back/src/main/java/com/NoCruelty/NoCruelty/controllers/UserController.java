@@ -62,8 +62,8 @@ public class UserController {
 	}
 	
 	@PreAuthorize("hasRole('ROL_USER')")
-	@GetMapping("/modificarUser")
-	public String modificarUser(Model model) {
+	@GetMapping("/modifyrUser")
+	public String modifyUser(Model model) {
 		Authentication auth = (Authentication) SecurityContextHolder.getContext().getAuthentication();
 		UserDetails userDetails = (UserDetails) auth.getPrincipal();
 		model.addAttribute("user", userService.searchForEmail(userDetails.getPassword()));

@@ -7,10 +7,11 @@ import java.util.List;
 
 @Entity
 @Data
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @Column(name = "id")
     private Long id;
 
@@ -20,8 +21,8 @@ public class Order {
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Product> productList;
 
-    @ManyToOne()
-    @JoinColumn(name = "id_user", nullable = false, updatable = false)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinColumn(name = "user_id", nullable = false, updatable = false)
     private User user;
 
 }

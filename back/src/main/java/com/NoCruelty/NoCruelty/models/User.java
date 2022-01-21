@@ -37,7 +37,7 @@ public class User {
     private Rol rol;
 
     @ManyToOne()
-    @JoinColumn(name = "id_zone", nullable = false, updatable = false)
+    @JoinColumn(name = "zone_id", nullable = false, updatable = false)
     private Zone zone;
 
     public User(Object get, String password, List<GrantedAuthority> permisos) {
@@ -46,7 +46,7 @@ public class User {
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Order> orderList;
+    private List<Orders> orderList;
 
     public User() {
     }
