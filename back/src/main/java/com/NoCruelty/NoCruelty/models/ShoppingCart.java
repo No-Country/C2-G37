@@ -7,22 +7,30 @@ import lombok.Data;
 
 @Entity
 @Data
-public class ShopCart {
-    
+public class ShoppingCart {
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String totalPrice;
+
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Product> productList;
-    
+
     @Enumerated(EnumType.STRING)
     TypeOfPayment typeOfPayment;
-    
-    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+
+//    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+//    private Zone zone;
+    @ManyToOne()
+    @JoinColumn(name = "id_zone", nullable = false, updatable = false)
     private Zone zone;
-    
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+
+//    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
+    @ManyToOne()
+    @JoinColumn(name = "id_payment", nullable = false, updatable = false)
     private Payment payment;
+
 }

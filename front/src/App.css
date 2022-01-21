@@ -1,0 +1,22 @@
+.App {
+  width: 100%;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.App > main {
+  width: 100%;
+  flex-grow: 1;
+  animation: show 0.3s ease;
+}
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translateX(40%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}

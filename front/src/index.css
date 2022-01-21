@@ -19,3 +19,66 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* estilos reutilizables */
+/* principal buttons */
+.nav-btns {
+  padding: 0.8rem 0;
+
+  width: 100%;
+}
+.nav-btns__ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+}
+
+.nav-btns__ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  font-size: 1.7rem;
+  animation: btns-icon calc(0.2s * var(--i)) ease;
+}
+.btns-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.btns-link > svg,
+.cart-icon svg {
+  transition: transform 0.1s ease;
+}
+.btns-link:active > svg,
+.cart-icon:active svg {
+  transform: scale(1.2);
+}
+@keyframes btns-icon {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.btns-link__name {
+  font-size: 0.7rem;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 8px;
+  background-color: #eeeeee;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #bbbbbb;
+}
