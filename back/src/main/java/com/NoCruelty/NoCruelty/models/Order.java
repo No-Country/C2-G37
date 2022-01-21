@@ -11,13 +11,17 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_order")
-    private Long idOrder;
-    private String comments;
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "response")
+    private String response;
+
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     private List<Product> productList;
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "id")
+
+    @ManyToOne()
+    @JoinColumn(name = "id_user", nullable = false, updatable = false)
     private User user;
-  
+
 }

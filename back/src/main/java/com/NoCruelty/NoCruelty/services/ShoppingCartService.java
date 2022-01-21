@@ -55,7 +55,7 @@ public class ShoppingCartService {
 
     @Transactional
     private void validate(String totalPrice, List<Product> productList) throws Error {
-        if (totalPrice == null || totalPrice.isEmpty() || totalPrice.isBlank()) {
+        if (totalPrice == null || totalPrice.isEmpty() || totalPrice.contains("   ")) {
             throw new Error("Price must not contain spaces or be empty.");
         }
         if (productList == null || productList.isEmpty()) {
