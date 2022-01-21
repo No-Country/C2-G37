@@ -63,7 +63,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public User searchForEmail(String email) {
-        return userRepository.getById(email);
+        return userRepository.getById(id);
     }
 
     public void modify(String name, String surname, String password, String email, Long phone) {

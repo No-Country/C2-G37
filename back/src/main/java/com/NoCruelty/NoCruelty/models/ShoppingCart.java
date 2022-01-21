@@ -25,12 +25,12 @@ public class ShoppingCart {
 //    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
 //    private Zone zone;
     @ManyToOne()
-    @JoinColumn(name = "id_zone", nullable = false, updatable = false)
+    @JoinColumn(name = "zone_id", nullable = false, updatable = false)
     private Zone zone;
 
 //    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     @ManyToOne()
-    @JoinColumn(name = "id_payment", nullable = false, updatable = false)
+    @JoinColumn(name = "payment_id", nullable = false, updatable = false)
     private Payment payment;
 
 }
