@@ -49,9 +49,11 @@ code {
   flex-direction: column;
   text-decoration: none;
   color: #000;
-  cursor: pointer;
+  cursor: auto;
 }
-
+.btns-link.active {
+  color: #5ece7b;
+}
 .btns-link > svg,
 .cart-icon svg {
   transition: transform 0.1s ease;
@@ -75,10 +77,21 @@ code {
 }
 
 .scroll::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
   background-color: #eeeeee;
 }
 
 .scroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
   background-color: #bbbbbb;
+}
+
+@media only screen and (min-width: 800px) {
+  .btns-link {
+    cursor: pointer;
+  }
+  .lateral-padding-desk {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }

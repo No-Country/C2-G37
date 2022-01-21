@@ -1,0 +1,14 @@
+.footer-home {
+  background-color: #4e5975;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  padding: 1.5rem;
+  color: #e6e6e6;
+  row-gap: 1rem;
+}
+.footer-home__section {
+  margin-bottom: 1rem;
+}
+.footer-home__section > h3 {
+  margin-bottom: 0.5rem;
+}

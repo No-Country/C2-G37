@@ -1,0 +1,7 @@
+.container-path {
+  padding: 1rem;
+}
+.container-path__list {
+  display: flex;
+  list-style: none;
+}

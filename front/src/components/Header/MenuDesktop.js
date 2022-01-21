@@ -1,4 +1,3 @@
-import "./MenuDesktop.css";
 import logo from "../../assets/img/logo transparent.png";
 import { Link } from "react-router-dom";
 const MenuDesktop = () => {

@@ -61,19 +61,19 @@ public class PaymentService {
 
     @Transactional
     private void validate(String cardNumber, String securityCode, String DNI, String expireDate, String responsible) throws Error {
-        if (cardNumber == null || cardNumber.isEmpty() || cardNumber.isBlank() || cardNumber.length() < 16 || cardNumber.length() > 16) {
+        if (cardNumber == null || cardNumber.isEmpty() || cardNumber.contains("   ") || cardNumber.length() < 16 || cardNumber.length() > 16) {
             throw new Error("The card number must not contain spaces, be empty or differ from 16 digits.");
         }
-        if (securityCode == null || securityCode.isEmpty() || securityCode.isBlank() || securityCode.length() < 4 || securityCode.length() > 4) {
+        if (securityCode == null || securityCode.isEmpty() || securityCode.contains("   ") || securityCode.length() < 4 || securityCode.length() > 4) {
             throw new Error("The security card number must not contain spaces, be empty or differ from 4 digits.");
         }
-        if (DNI == null || DNI.isEmpty() || DNI.isBlank() || DNI.length() < 8 || DNI.length() > 8) {
+        if (DNI == null || DNI.isEmpty() || DNI.contains("   ") || DNI.length() < 8 || DNI.length() > 8) {
             throw new Error("The DNI must not contain spaces, be empty or differ from 8 digits.");
         }
-        if (expireDate == null || expireDate.isEmpty() || expireDate.isBlank()) {
+        if (expireDate == null || expireDate.isEmpty() || expireDate.contains("   ")) {
             throw new Error("Dates must not contain spaces or be empty.");
         }
-        if (responsible == null || responsible.isEmpty() || responsible.isBlank() || responsible.length() < 4) {
+        if (responsible == null || responsible.isEmpty() || responsible.contains("   ") || responsible.length() < 4) {
             throw new Error("Responsible's name must not contain spaces, be empty or be less than 3 letters.");
         }
     }

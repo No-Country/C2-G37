@@ -2,6 +2,7 @@ package com.NoCruelty.NoCruelty.services;
 
 import com.NoCruelty.NoCruelty.enums.Rol;
 import com.NoCruelty.NoCruelty.models.User;
+import com.NoCruelty.NoCruelty.models.Zone;
 import com.NoCruelty.NoCruelty.repositories.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +31,14 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private ZoneService zoneService;
+    private Long id;
 
     @Transactional
     public void save(User user) {
         userRepository.save(user);
     }
-    
-    public void save(String name, String surname, String password, String email, Long phone) throws Exception {
+
+    public void save(String name, String surname, String password, String email, Long phone, String province, String localidad) throws Exception {
 
         validateModify(name, surname, password, email, phone);
 
@@ -45,28 +47,33 @@ public class UserService implements UserDetailsService {
         user.setName(name);
         user.setSurname(surname);
         user.setPassword(password);
-        user.setEmail(email); 
+        user.setEmail(email);
         user.setPhone(0);
 
-//        Zone zone = zoneService.searchZone(email, surname);
-//        user.setZone(zone);
+        Zone zone = zoneService.searchZone(province, localidad);
+        user.setZone(zone);
 
         userRepository.save(user);
     }
 
     @Transactional
-    public User searchForId(String id) {
+    public User searchForId(Long id) {
+        return userRepository.getById(id);
+    }
+
+    @Transactional
+    public User searchForEmail(String email) {
         return userRepository.getById(id);
     }
 
     public void modify(String name, String surname, String password, String email, Long phone) {
-        User user = searchForId(name);
+        User user = searchForId(id);
 
         validateModify(name, surname, password, email, phone);
 
         user.setName(name);
         user.setSurname(surname);
-        user.setPassword(password);
+        user.setPassword(passwordEncoder.encode(password));
         user.setEmail(email);
         user.setPhone(0);
         user.setRol(Rol.ROL_USER);
@@ -75,8 +82,8 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> users= userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String surname) throws UsernameNotFoundException {
+        Optional<User> users = userRepository.findBysurname(surname);
 
         List<GrantedAuthority> permisos = new ArrayList<>();
 
@@ -95,10 +102,9 @@ public class UserService implements UserDetailsService {
         session.setAttribute("userSession", users);
 
         User user = new User(users.get(), users.get().getPassword(), permisos);
-        
+
         return (UserDetails) user;
     }
-
 
     public void validateModify(String name, String surname, String password, String email, Long phone) throws Error {
 
@@ -109,8 +115,8 @@ public class UserService implements UserDetailsService {
         if (surname == null || surname.isEmpty()) {
             throw new Error("Ingresó el apellido vacio o nulo");
         }
-        
-          if (password == null || password.isEmpty()) {
+
+        if (password == null || password.isEmpty()) {
             throw new Error("Ingresó un nombre vacio o nulo");
         }
 
@@ -122,6 +128,5 @@ public class UserService implements UserDetailsService {
             throw new Error("Ingresó un DNI vacio o nulo");
         }
     }
-   
 }
 

@@ -8,8 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.stereotype.Controller;
 
-@RestController
+//@RestController
+@Controller
 @RequestMapping("/products")
 public class ProductController {
 
@@ -18,30 +20,31 @@ public class ProductController {
 
     //Buscar un producto por id
     @GetMapping("/{id-product}")
-    public ResponseEntity<Object> findProductId(@PathVariable("id-product") Long idProducto){
+    public ResponseEntity<Object> findProductId(@PathVariable("id-product") Long id) {
         System.out.println("Holaaa");
-        return new ResponseEntity<>(iProductService.findProductId(idProducto), HttpStatus.OK);
+        return new ResponseEntity<>(iProductService.findProductId(id), HttpStatus.OK);
     }
 
     //Listar todos los productos
     @GetMapping
-    public ResponseEntity<List<Product>> findAllProducts(){
+    public ResponseEntity<List<Product>> findAllProducts() {
         return new ResponseEntity<>(iProductService.listAllProducts(), HttpStatus.OK);
+//        
     }
 
     @PostMapping
-    public ResponseEntity<Object> createProduct(@RequestBody Product product){
+    public ResponseEntity<Object> createProduct(@RequestBody Product product) {
         return new ResponseEntity<>(iProductService.saveProduct(product), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id-product}")
-    public String updateProductId(@PathVariable("id-product") Long idProducto){
-        return "Buscar un solo producto"+ idProducto;
+    public String updateProductId(@PathVariable("id-product") Long id) {
+        return "Buscar un solo producto" + id;
     }
 
     @DeleteMapping("/{id-product}")
-    public ResponseEntity<String> deleteProductId(@PathVariable("id-product") Long idProducto){
-            iProductService.deleteProduct(idProducto);
-        return new ResponseEntity<>("Producto con id: "+idProducto+ "Eliminado con exito", HttpStatus.OK);
+    public ResponseEntity<String> deleteProductId(@PathVariable("id-product") Long id) {
+            iProductService.deleteProduct(id);
+        return new ResponseEntity<>("Producto con id: " + id + "Eliminado con exito", HttpStatus.OK);
     }
 }
