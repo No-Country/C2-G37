@@ -9,6 +9,8 @@
   width: 100%;
   flex-grow: 1;
   animation: show 0.3s ease;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 @keyframes show {
   from {
