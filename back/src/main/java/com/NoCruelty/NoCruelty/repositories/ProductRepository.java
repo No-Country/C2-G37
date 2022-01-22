@@ -1,7 +1,6 @@
 package com.NoCruelty.NoCruelty.repositories;
 
 import com.NoCruelty.NoCruelty.models.Product;
-import static com.sun.xml.internal.ws.api.model.wsdl.WSDLBoundOperation.ANONYMOUS.optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
