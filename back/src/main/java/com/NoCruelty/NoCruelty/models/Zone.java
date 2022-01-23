@@ -27,4 +27,11 @@ private static final long serialVersionUID = 1L;
     @Column(name = "Province")
     private String province;
 
+    public Zone(String country, String province) {
+        this.country = country;
+        this.province = province;
+    }
+
+ 
+
 }
