@@ -1,10 +1,11 @@
 package com.NoCruelty.NoCruelty.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.NoCruelty.NoCruelty.models.ShoppingCart;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Long> {
+public interface ShoppingCartRepository extends CrudRepository<ShoppingCart, Long> {
     
+    ShoppingCart save(ShoppingCart shoppingCart);
 }

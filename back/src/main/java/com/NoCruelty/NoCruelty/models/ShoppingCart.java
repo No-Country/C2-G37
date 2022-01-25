@@ -14,6 +14,7 @@ public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String fechaYHora;
     private String totalPrice;
 
     @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
@@ -22,13 +23,10 @@ public class ShoppingCart {
     @Enumerated(EnumType.STRING)
     TypeOfPayment typeOfPayment;
 
-//    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
-//    private Zone zone;
     @ManyToOne()
     @JoinColumn(name = "zone_id", nullable = false, updatable = false)
     private Zone zone;
 
-//    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REMOVE})
     @ManyToOne()
     @JoinColumn(name = "payment_id", nullable = false, updatable = false)
     private Payment payment;

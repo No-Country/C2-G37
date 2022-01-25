@@ -28,7 +28,7 @@ public class ShoppingCartService {
 
     @Transactional(readOnly = true)
     public List<ShoppingCart> read() {
-        return shoppingCartRepository.findAll();
+        return (List<ShoppingCart>) shoppingCartRepository.findAll();
     }
 
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = {Exception.class})
