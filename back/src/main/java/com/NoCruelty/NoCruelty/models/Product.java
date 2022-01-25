@@ -11,7 +11,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name  = "product_id")
+    @Column(name = "product_id")
     private Long id;
     private String name;
     private double price;
@@ -20,4 +20,15 @@ public class Product {
     private int stock;
     private String urlImage;
 
+    public boolean sinStock() {
+        return this.stock <= 0;
+    }
+
+    public void plusStock(int stock) {
+        this.stock += stock;
+    }
+
+    public void subtractStock(int stock) {
+        this.stock -= stock;
+    }
 }
