@@ -17,4 +17,8 @@ public class Payment {
     private String DNI;
     private String expireDate;
     private String responsible;
+
+    public Object setTransactionAmount(Float transactionAmount) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
