@@ -29,7 +29,7 @@ public class security extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.headers().frameOptions().sameOrigin()
 			.and()
-				.authorizeRequests().antMatchers("/css/*", "/js/*", "/img/*", "/**").permitAll()
+				.authorizeRequests().antMatchers("/css/*","/*.json/", "/js/*", "/img/*", "/**").permitAll()
 			.and()
 				.authorizeRequests().antMatchers("/list").hasRole("ADMIN")
 			.and()
