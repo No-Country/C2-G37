@@ -4,3 +4,4 @@
 <strong>Stack<strong> > Java, Spring Boot Framework, HTML, CSS, JavaScript, React. <br><br>
 <strong>Backend<strong> > William Johan Novoa, Oriana Pellegrini, Johana Martinez. <br><br>
 <strong>Frontend<strong> > César Mauricio Fierro Calderón, Elías Yoc.
+ 
