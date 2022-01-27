@@ -32,6 +32,9 @@ private static final long serialVersionUID = 1L;
         this.province = province;
     }
 
+    public Zone() {
+    }
+
  
 
 }

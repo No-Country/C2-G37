@@ -17,7 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
+//@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -46,7 +47,6 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<Object> registroUser(@RequestBody User user) throws Exception {
-
         System.out.println("user.getName() = " + user.getName());
         System.out.println("user.getEmail() = " + user.getEmail());
         System.out.println("user.getPassword() = " + user.getPassword());
@@ -59,6 +59,7 @@ public class UserController {
             userService.save(user.getName(), user.getSurname(), user.getPassword(), user.getEmail(), user.getPhone(), user.getZone().getProvince(), user.getZone().getCountry());
             return new ResponseEntity<>("Usuario creado exitosamente", HttpStatus.CREATED);
         } catch (Exception e) {
+            System.out.println("Error: "+e);
             return new ResponseEntity<>("Usuario no creado", HttpStatus.BAD_REQUEST);
         }
 
