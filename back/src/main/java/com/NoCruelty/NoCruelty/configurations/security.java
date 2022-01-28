@@ -27,19 +27,27 @@ public class security extends WebSecurityConfigurerAdapter{
 	}
 
 	protected void configure(HttpSecurity http) throws Exception {
-		http.headers().frameOptions().sameOrigin()
-			.and()
-				.authorizeRequests().antMatchers("/css/*","/.json/*", "/js/*", "/img/*", "/**").permitAll()
-			.and()
-				.authorizeRequests().antMatchers("/list").hasRole("ADMIN")
-			.and()
-				.formLogin().loginPage("/login").loginProcessingUrl("/logincheck")
-				.passwordParameter("password")
-				.defaultSuccessUrl("/").failureUrl("/user/login")
-				.permitAll()
-			.and()
-				.logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll()
-			.and()
-				.csrf().disable();
+//		http.headers().frameOptions().sameOrigin()
+//			.and()
+//				.authorizeRequests().antMatchers("/css/*","/.json/*", "/js/*", "/img/*", "*/*").permitAll()
+//                        
+//			.and()
+//				.authorizeRequests().antMatchers("/list").hasRole("ADMIN")
+//			.and()
+//				.formLogin().loginPage("/login").loginProcessingUrl("/logincheck")
+//				.passwordParameter("password")
+//				.defaultSuccessUrl("/").failureUrl("/user/login")
+//				.permitAll()
+//			.and()
+//				.logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll()
+//			.and()
+//				.csrf().disable();
+//                
+                http.authorizeRequests()
+                        .antMatchers("/admin").hasRole("ROL_ADMIN,")
+                        .antMatchers("/user").hasRole("ROL_USER,")
+                        .antMatchers("/").permitAll()
+                        .and().formLogin();
+       
 	}	
 }
