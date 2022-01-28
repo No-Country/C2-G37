@@ -13,7 +13,7 @@ const GridProductsFound = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch("http://34.133.133.181:8080/products");
+      const res = await fetch("http://34.133.133.181:8080/products/search");
       console.log(res);
       const data = await res.json();
       console.log(data);
