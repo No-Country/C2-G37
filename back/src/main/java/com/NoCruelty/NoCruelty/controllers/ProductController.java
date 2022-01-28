@@ -19,20 +19,20 @@ public class ProductController {
     IProductService iProductService;
 
     //Buscar un producto por id
-    @GetMapping("/{id-product}")
+    @GetMapping("/search/{id-product}")
     public ResponseEntity<Object> findProductId(@PathVariable("id-product") Long id) {
         System.out.println("Holaaa");
         return new ResponseEntity<>(iProductService.findProductId(id), HttpStatus.OK);
     }
 
     //Listar todos los productos
-    @GetMapping
+    @GetMapping("/search")
     public ResponseEntity<List<Product>> findAllProducts() {
         return new ResponseEntity<>(iProductService.listAllProducts(), HttpStatus.OK);
 //        
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Object> createProduct(@RequestBody Product product) {
         return new ResponseEntity<>(iProductService.saveProduct(product), HttpStatus.CREATED);
     }
@@ -42,7 +42,7 @@ public class ProductController {
         return "Buscar un solo producto" + id;
     }
 
-    @DeleteMapping("/{id-product}")
+    @DeleteMapping("/delete/{id-product}")
     public ResponseEntity<String> deleteProductId(@PathVariable("id-product") Long id) {
             iProductService.deleteProduct(id);
         return new ResponseEntity<>("Producto con id: " + id + "Eliminado con exito", HttpStatus.OK);

@@ -36,7 +36,7 @@ public class UserController {
     }
 
     @PreAuthorize("hasRole('ROL_USER')")
-    @GetMapping("/perfil")
+        @GetMapping("/perfil")
     public String perfil(Model model) {
         Authentication auth = (Authentication) SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
@@ -45,7 +45,7 @@ public class UserController {
         return "perfil";
     }
 
-    @PostMapping("/register")
+    @GetMapping("/register")
     public ResponseEntity<Object> registroUser(@RequestBody User user) throws Exception {
         System.out.println("user.getName() = " + user.getName());
         System.out.println("user.getEmail() = " + user.getEmail());
@@ -65,7 +65,7 @@ public class UserController {
 
     }
 
-    @PutMapping("/modificar/{email}")
+    @PutMapping("/modificar")
     public ResponseEntity<Object> moddificarUser(@PathVariable String email, @RequestParam(value = "name", required = false) String name, @RequestParam(value = "surname", required = false) String surname) {
         System.out.println("email = " + email);
         return new ResponseEntity<>(email + " " + name + " " + surname, HttpStatus.OK);
