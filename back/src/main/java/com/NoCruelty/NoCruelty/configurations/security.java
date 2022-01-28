@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
@@ -20,12 +21,19 @@ public class security extends WebSecurityConfigurerAdapter{
 	@Autowired
 	@Qualifier("userService")
 	public UserService userService;
+        
+        @Autowired
+        UserDetailsService  userDetailsService;
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
+	@Override
+//	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
+        
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService);
 	}
 
+        @Override
 	protected void configure(HttpSecurity http) throws Exception {
 //		http.headers().frameOptions().sameOrigin()
 //			.and()
