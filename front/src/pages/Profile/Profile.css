@@ -1,0 +1,27 @@
+.options {
+  margin: 1rem;
+  padding: 0.5rem;
+  background-color: #f0fff0;
+  min-height: 200px;
+}
+.options__info {
+  margin: 1rem 0;
+  font-size: 0.8rem;
+}
+.btn-warning {
+  color: crimson;
+  background-color: transparent;
+  border: 2px solid crimson;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+@media only screen and (min-width: 800px) {
+  .btn-warning {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .btn-warning:active {
+    transform: scale(0.95);
+  }
+}

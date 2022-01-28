@@ -1,5 +1,4 @@
 import { AiOutlineHome, AiOutlineHeart, AiOutlineUser } from "react-icons/ai";
-import { CgMenu } from "react-icons/cg";
 import { FiShoppingCart } from "react-icons/fi";
 import { NavLink } from "react-router-dom";
 import LiButton from "./LiButton";
@@ -13,7 +12,7 @@ const NavMobile = () => {
           icon={AiOutlineHome}
           title="Inicio"
         />
-        <LiButton delayAnimation={3} to="/menu" icon={CgMenu} title="Menú" />
+        {/* <LiButton delayAnimation={3} to="/menu" icon={CgMenu} title="Menú" /> */}
         <LiButton
           delayAnimation={4}
           to="/favorites"

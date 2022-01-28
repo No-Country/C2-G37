@@ -2,10 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   height: 100vh;
+  animation: introduce 0.5s ease;
 }
-
+@keyframes introduce {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.signup-container.login {
+  justify-content: center;
+}
 .signup-container__title {
   position: relative;
   width: 100%;
@@ -20,7 +30,13 @@
   left: 0;
   top: 0;
 }
-
+.signup-link {
+  background-color: hsl(136, 53%, 89%);
+  border-radius: 0.5rem;
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0.3rem 0;
+}
 .form-sign {
   width: 100%;
   display: flex;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-const BtnSubmenu = ({ title, list }) => {
+const BtnSubmenu = ({ category, subCategory, list }) => {
   const [showDropDown, setshowDropDown] = useState(false);
   const handleClick = () => {
     setshowDropDown(!showDropDown);
@@ -10,7 +10,7 @@ const BtnSubmenu = ({ title, list }) => {
   return (
     <div onClick={handleClick} className="dropdown">
       <button className="btn-menu">
-        {title}
+        {subCategory}
         <IoIosArrowDown
           className={`btn-menu__icon ${
             showDropDown && "btn-menu__icon_rotate"
@@ -21,7 +21,11 @@ const BtnSubmenu = ({ title, list }) => {
         className={`dropdown__list ${showDropDown && "dropdown__list_show"}`}
       >
         {list.map((el, i) => (
-          <Link className="dropdown__link" key={i} to={`/${el.title}`}>
+          <Link
+            className="dropdown__link"
+            key={i}
+            to={`/${category.toLowerCase()}/${subCategory.toLowerCase()}/${el.title.toLowerCase()}`}
+          >
             {el.title}
           </Link>
         ))}

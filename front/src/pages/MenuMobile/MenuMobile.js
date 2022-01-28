@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import BtnMenu from "./components/BtnMenu";
 import Submenu from "./components/Submenu";
+import { FiX } from "react-icons/fi";
 import "./MenuMobile.css";
-const initialOptions = [
+export const initialOptions = [
   {
     id: 1,
     title: "MUJERES",
@@ -75,10 +76,21 @@ const MenuMobile = () => {
     setShowMenu(!showMenu);
     setIdToFindCategories(title);
   };
+  const handleHideMenu = () => {
+    const $menu = document.querySelector(".menu");
+    $menu.classList.remove("show");
+  };
   return (
-    <main className="menu scroll">
+    <div className="menu scroll">
       <header className="headers-menu">
-        <h4 className="menu__title ">Menu</h4>
+        <h4 className="menu__title ">Menú</h4>
+        <button
+          onClick={handleHideMenu}
+          aria-label="salir del menú"
+          className="menu-btn"
+        >
+          <FiX />
+        </button>
       </header>
       <section className="menu__section">
         {categories.map(({ id, title }) => (
@@ -97,7 +109,7 @@ const MenuMobile = () => {
         idToFindCategories={idToFindCategories}
         categories={categories}
       />
-    </main>
+    </div>
   );
 };
 
