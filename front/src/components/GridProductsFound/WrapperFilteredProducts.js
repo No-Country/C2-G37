@@ -1,5 +1,5 @@
 import HeaderFilters from "./HeaderFilters";
-import GridProductsFound from "../components/GridProductsFound";
+import GridProductsFound from "./GridProductsFound";
 
 const WrapperFilteredProducts = () => {
   return (

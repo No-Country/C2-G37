@@ -15,7 +15,14 @@ const Submenu = ({ setShowMenu, showMenu, idToFindCategories, categories }) => {
       </header>
       {categoriesFound?.subCategories.map(
         ({ title, list }, i) =>
-          list.length > 0 && <BtnSubmenu key={i} title={title} list={list} />
+          list.length > 0 && (
+            <BtnSubmenu
+              key={i}
+              category={categoriesFound.title}
+              subCategory={title}
+              list={list}
+            />
+          )
       )}
     </section>
   );

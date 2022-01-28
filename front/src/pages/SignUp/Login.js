@@ -1,5 +1,9 @@
 import { Formik, Field, ErrorMessage, Form } from "formik";
-import { IoIosArrowBack } from "react-icons/io";
+import { FiX } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { isUserAuth } from "../../features/authUser/authSlice";
+
 import "./Register.css";
 const validate = (values) => {
   const errors = {};
@@ -19,10 +23,15 @@ const validate = (values) => {
   return errors;
 };
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const handleExit = () => {
+    navigate("/");
+  };
   return (
-    <main className="signup-container">
+    <main className="signup-container login">
       <h1 className="signup-container__title">
-        <IoIosArrowBack className="signup-container__icon" />
+        <FiX onClick={handleExit} className="signup-container__icon" />
         Iniciar Sesión
       </h1>
 
@@ -36,7 +45,7 @@ const Login = () => {
           telNumber: "",
         }}
         validate={validate}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(values) => dispatch(isUserAuth(true))}
       >
         <Form className="form-sign" autoComplete="off">
           <label htmlFor="email">Correo</label>
@@ -71,6 +80,9 @@ const Login = () => {
           >
             Iniciar Sesión
           </button>
+          <Link className="signup-link" to="/register">
+            Registrarse
+          </Link>
         </Form>
       </Formik>
     </main>

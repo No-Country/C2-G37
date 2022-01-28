@@ -1,5 +1,6 @@
 import { Formik, Field, ErrorMessage, Form } from "formik";
-import { IoIosArrowBack } from "react-icons/io";
+import { FiX } from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 const validate = (values) => {
   const errors = {};
@@ -33,14 +34,21 @@ const validate = (values) => {
   } else if (values.confirmPassword !== values.password) {
     errors.confirmPassword = "La contraseña no coincide";
   }
+  if (values.telNumber.length === 0) {
+    errors.telNumber = "Campo requerido";
+  }
   return errors;
 };
 
 const Register = () => {
+  const navigate = useNavigate();
+  const handleExit = () => {
+    navigate("/");
+  };
   return (
     <main className="signup-container">
       <h1 className="signup-container__title">
-        <IoIosArrowBack className="signup-container__icon" />
+        <FiX onClick={handleExit} className="signup-container__icon" />
         Registrarse
       </h1>
 
@@ -52,6 +60,7 @@ const Register = () => {
           names: "",
           lastName: "",
           telNumber: "",
+          zone: "",
         }}
         validate={validate}
         onSubmit={(values) => console.log(values)}
@@ -109,7 +118,7 @@ const Register = () => {
             name="password"
           />
 
-          <label htmlFor="confirmPawword">Confirmar contraseña</label>
+          <label htmlFor="confirmPassword">Confirmar contraseña</label>
           <Field
             className="form-sign__input"
             type="password"
@@ -126,7 +135,7 @@ const Register = () => {
           <Field
             id="telNumber"
             className="form-sign__input"
-            type="number"
+            type="tel"
             name="telNumber"
           />
           <ErrorMessage
@@ -134,13 +143,20 @@ const Register = () => {
             component="span"
             name="telNumber"
           />
-
+          <label htmlFor="zone">País</label>
+          <Field id="zone" name="zone" className="form-sign__input" as="select">
+            <option value=""></option>
+            <option value="mexico">méxico</option>
+          </Field>
           <button
             className="form-sign__input form-sign__input_send"
             type="submit"
           >
             Registrarse
           </button>
+          <Link className="signup-link" to="/login">
+            Iniciar Sesión
+          </Link>
         </Form>
       </Formik>
     </main>

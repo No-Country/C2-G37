@@ -1,6 +1,5 @@
 import EmptyFavorites from "../Favorites/components/EmptyFavorites";
-import PathName from "../components/PathName";
-import WrapperFilteredProducts from "../components/WrapperFilteredProducts";
+import WrapperFilteredProducts from "../../components/GridProductsFound/WrapperFilteredProducts";
 
 const Favorites = () => {
   const isFavEmpty = false;

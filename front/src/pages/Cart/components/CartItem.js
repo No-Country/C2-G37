@@ -1,5 +1,4 @@
-import { BiDotsVerticalRounded } from "react-icons/bi";
-import { FiPlus, FiMinus } from "react-icons/fi";
+import { FiPlus, FiMinus, FiX } from "react-icons/fi";
 const CartItem = ({ img, altItem = "producto del carrito", name, price }) => {
   return (
     <article className="cart-item">
@@ -12,7 +11,9 @@ const CartItem = ({ img, altItem = "producto del carrito", name, price }) => {
       <section className="cart-item__info">
         <header className="cart-item__name">
           <h4>{name}</h4>
-          <BiDotsVerticalRounded className="icon-click" />
+          <button className="btn-cart" aria-label="borrar producto completo">
+            <FiX className="icon-click" />
+          </button>
         </header>
         <div className="cart-item__details">
           <p>{price}</p>

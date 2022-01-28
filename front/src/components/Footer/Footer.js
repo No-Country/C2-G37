@@ -22,14 +22,15 @@ const Footer = () => {
         <p>Contact us</p>
       </section>
       <section className="footer-home__section">
-        <h3>PAYMENTS &amp DELIVERY</h3>
+        <h3>PAYMENTS &amp; DELIVERY</h3>
         <p>Purchase terms</p>
         <p>Guarantee</p>
         <p>Contact us</p>
       </section>
-      <section className="footer-home__section">
-        <h3>SOCIAL</h3>
-      </section>
+      <p className="footer__copy">
+        {new Date().getFullYear()} © No Cruelty Store todos los derechos
+        reservados
+      </p>
     </footer>
   );
 };
